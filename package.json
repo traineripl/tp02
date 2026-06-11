@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "tests"
+    "test:a11y": "node tests/a11y.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
