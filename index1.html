@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>SPA Accessibilité Lab</title>
+
+  <style>
+    /* ❌ ERREUR 1 : contraste insuffisant */
+    .title {
+      color: #777; /* trop clair sur fond blanc */
+    }
+
+    /* ❌ ERREUR 2 : bouton sans focus visible */
+    button {
+      background: #ccc;
+      border: none;
+      padding: 10px;
+    }
+
+    button:focus {
+      outline: none; /* suppression focus clavier */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ❌ ERREUR 3 : pas de landmark -->
+  <div class="header">
+    <h1 class="title">Bienvenue sur la SPA</h1>
+  </div>
+
+  <!-- ❌ ERREUR 4 : input sans label -->
+  <div>
+    <input type="text" placeholder="Nom utilisateur">
+  </div>
+
+  <!-- ❌ ERREUR 5 : bouton non accessible clavier clairement -->
+  <div>
+    <button onclick="alert('OK')">Valider</button>
+  </div>
+
+  <!-- ❌ ERREUR 6 : image sans alt -->
+  <img src="logo.png">
+
+</body>
+</html>

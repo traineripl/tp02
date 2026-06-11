@@ -5,12 +5,12 @@
   <title>SPA Accessibilité Lab</title>
 
   <style>
-    /* ❌ ERREUR 1 : contraste insuffisant */
+    /* ✅ contraste corrigé */
     .title {
-      color: #777; /* trop clair sur fond blanc */
+      color: #222;
     }
 
-    /* ❌ ERREUR 2 : bouton sans focus visible */
+    /* ✅ bouton accessible + focus visible */
     button {
       background: #ccc;
       border: none;
@@ -18,30 +18,42 @@
     }
 
     button:focus {
-      outline: none; /* suppression focus clavier */
+      outline: 3px solid #000;
+      outline-offset: 2px;
+    }
+
+    /* bonus : input focus visible */
+    input:focus {
+      outline: 2px solid #000;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ❌ ERREUR 3 : pas de landmark -->
-  <div class="header">
+  <!-- ✅ landmark principal -->
+  <header>
     <h1 class="title">Bienvenue sur la SPA</h1>
-  </div>
+  </header>
 
-  <!-- ❌ ERREUR 4 : input sans label -->
-  <div>
-    <input type="text" placeholder="Nom utilisateur">
-  </div>
+  <!-- ✅ input avec label -->
+  <main>
+    <div>
+      <label for="username">Nom utilisateur</label>
+      <input id="username" type="text" placeholder="Nom utilisateur">
+    </div>
 
-  <!-- ❌ ERREUR 5 : bouton non accessible clavier clairement -->
-  <div>
-    <button onclick="alert('OK')">Valider</button>
-  </div>
+    <!-- ✅ bouton accessible clavier -->
+    <div>
+      <button type="button" onclick="alert('OK')">
+        Valider
+      </button>
+    </div>
 
-  <!-- ❌ ERREUR 6 : image sans alt -->
-  <img src="logo.png">
+    <!-- ✅ image avec alt -->
+    <img src="logo.png" alt="Logo de l'application SPA">
+
+  </main>
 
 </body>
 </html>
