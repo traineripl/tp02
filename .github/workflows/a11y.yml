@@ -1,34 +1,29 @@
-name: Accessibility Audit
+name: Accessibility Tests (A11Y - RGAA)
 
 on:
   push:
-    paths:
-      - 'app_02/index.html'
-      - 'app_02/tests/a11y.audit.js'
+    branches: [ main ]
   pull_request:
-    paths:
-      - 'app_02/index.html'
-      - 'app_02/tests/a11y.audit.js'
 
 jobs:
   a11y-test:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          cd app_02
-          run: npm ci
+        run: npm ci
 
-      - name: Run accessibility audit
-        run: |
-          cd app_02
-          node tests/a11y.audit.js
+      - name: Install Chrome for Puppeteer
+        run: npx puppeteer browsers install chrome
+
+      - name: Run accessibility tests
+        run: npm run test:a11y
