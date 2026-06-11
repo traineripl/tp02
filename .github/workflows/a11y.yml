@@ -9,10 +9,6 @@ jobs:
   a11y-test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: app_02
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
